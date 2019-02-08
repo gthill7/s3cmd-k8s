@@ -1,6 +1,7 @@
 FROM alpine:3.4
 
-RUN apk add --no-cache python py-pip py-setuptools git ca-certificates curl jq \
+RUN apk update \
+ && apk add --no-cache python py-pip py-setuptools git ca-certificates curl jq curl-dev bash\
  && pip install --no-cache-dir python-dateutil python-magic \
  && git clone --depth=1 https://github.com/s3tools/s3cmd.git /opt/s3cmd \
  && rm -rf /opt/s3cmd/.git \
