@@ -10,7 +10,7 @@ S3CMD_CONFIG=/root/.s3cfg
 # Check for required parameters
 
 if [ -z "${access_key}" ]; then
-    echo "WARNING: The environment variable key is not set. Hopefully your node has access or you have kube2iam configured..."
+    echo "WARNING: The environment variable key was not passed. If not configured thru IAM, this will fail..."
 else
     #
     # Set user provided key and secret in .s3cfg file
@@ -20,8 +20,11 @@ else
 fi
 
 if [ -z "${secret_key}" ]; then
-    echo "WARNING: The environment variable secret is not set. Hopefully your node has access or you have kube2iam configured..."
+    echo "WARNING: The environment variable secret was not passed. If not configured thru IAM, this will fail..."
 else
+    #
+    # Set user provided key and secret in .s3cfg file
+    #
     echo "secret_key=${secret_key}" >> "$S3CMD_CONFIG"
 fi
 
