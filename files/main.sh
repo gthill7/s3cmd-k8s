@@ -9,19 +9,19 @@ S3CMD_CONFIG=/root/.s3cfg
 #
 # Check for required parameters
 #
-if [ -z "${access_key}" ]; then
-    echo "WARNING: The environment variable key is not set. Checking kubernetes..."
-    access_key=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/"${iam_role}" | jq -r '.AccessKeyId')
-    echo "access_key=${access_key}"
-#    exit 1
-fi
-
-if [ -z "${secret_key}" ]; then
-    echo "WARNING: The environment variable secret is not set. Checking kubernetes..."
-    secret_key=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/"${iam_role}" | jq -r '.SecretAccessKey')
-    echo "secret_key=${secret_key}"
-#    exit 1
-fi
+#if [ -z "${access_key}" ]; then
+#    echo "WARNING: The environment variable key is not set. Checking kubernetes..."
+#    access_key=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/"${iam_role}" | jq -r '.AccessKeyId')
+#    echo "access_key=${access_key}"
+##    exit 1
+#fi
+#
+#if [ -z "${secret_key}" ]; then
+#    echo "WARNING: The environment variable secret is not set. Checking kubernetes..."
+#    secret_key=$(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/"${iam_role}" | jq -r '.SecretAccessKey')
+#    echo "secret_key=${secret_key}"
+##    exit 1
+#fi
 
 ITER=true
 if [ -z "${interval}" ]; then
@@ -32,9 +32,9 @@ fi
 #
 # Set user provided key and secret in .s3cfg file
 #
-echo "" >> "$S3CMD_CONFIG"
-echo "access_key=${access_key}" >> "$S3CMD_CONFIG"
-echo "secret_key=${secret_key}" >> "$S3CMD_CONFIG"
+#echo "" >> "$S3CMD_CONFIG"
+#echo "access_key=${access_key}" >> "$S3CMD_CONFIG"
+#echo "secret_key=${secret_key}" >> "$S3CMD_CONFIG"
 
 #
 # Add region base host if it exist in the env vars
